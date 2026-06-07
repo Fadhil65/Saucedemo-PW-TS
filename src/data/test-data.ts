@@ -1,7 +1,7 @@
 export const CheckoutInfo = {
     valid: {
-      firstName: 'John',
-      lastName: 'Doe',
+      firstName: 'Sauce',
+      lastName: 'Test',
       postalCode: '12345',
     },
   } as const;

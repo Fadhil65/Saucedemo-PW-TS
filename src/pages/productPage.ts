@@ -9,6 +9,16 @@ export class ProductPage extends BasePage {
     readonly cartLink: Locator;
     readonly burgerMenuButton: Locator;
     readonly logoutLink: Locator;
+    readonly btnAddToCartBackpack: Locator;
+    readonly btnAddToCartBikeLight: Locator;
+    readonly btnAddToCartBoltTShirt: Locator;
+    readonly btnAddToCartFleeceJacket: Locator;
+    readonly btnRemoveBackpack: Locator;
+    readonly btnRemoveBikeLight: Locator;
+    readonly btnRemoveBoltTShirt: Locator;
+    readonly btnRemoveFleeceJacket: Locator;
+
+    
 
     constructor(page: Page) {
       super(page);
@@ -19,6 +29,14 @@ export class ProductPage extends BasePage {
       this.cartLink = page.locator('[data-test="shopping-cart-link"]');
       this.burgerMenuButton = page.getByRole('button', { name: 'Open Menu' });
       this.logoutLink = page.locator('[data-test="logout-sidebar-link"]');
+      this.btnAddToCartBackpack = page.locator('[data-test="add-to-cart-sauce-labs-backpack"]');
+      this.btnAddToCartBikeLight = page.locator('[data-test="add-to-cart-sauce-labs-bike-light"]');
+      this.btnAddToCartBoltTShirt = page.locator('[data-test="add-to-cart-sauce-labs-bolt-t-shirt"]');
+      this.btnAddToCartFleeceJacket = page.locator('[data-test="add-to-cart-sauce-labs-fleece-jacket"]');
+      this.btnRemoveBackpack = page.locator('[data-test="remove-sauce-labs-backpack"]');
+      this.btnRemoveBikeLight = page.locator('[data-test="remove-sauce-labs-bike-light"]');
+      this.btnRemoveBoltTShirt = page.locator('[data-test="remove-sauce-labs-bolt-t-shirt"]');
+      this.btnRemoveFleeceJacket = page.locator('[data-test="remove-sauce-labs-fleece-jacket"]');
     }
 
     async sortBy(option: string) {
@@ -33,13 +51,17 @@ export class ProductPage extends BasePage {
       const texts = await this.page.locator('[data-test="inventory-item-price"]').allTextContents();
       return texts.map((t) => parseFloat(t.replace('$', '')));
     }
-
-    async addToCartByIndex(index: number) {
-      await this.page.locator('button[data-test^="add-to-cart"]').nth(index).click();
+  
+    async addToCartBackpack() {
+      await this.btnAddToCartBackpack.click();
     }
 
-    async removeFromCartByIndex(index: number) {
-      await this.page.locator('button[data-test^="remove"]').nth(index).click();
+    async addToCartBikeLight() {
+      await this.btnAddToCartBikeLight.click();
+    }
+
+    async removeBackpack() {
+      await this.btnRemoveBackpack.click();
     }
 
     async goToCart() {

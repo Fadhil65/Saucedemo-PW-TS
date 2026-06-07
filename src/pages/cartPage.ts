@@ -6,7 +6,7 @@ export class CartPage extends BasePage {
     readonly cartItems: Locator;
     readonly checkoutButton: Locator;
     readonly continueShoppingButton: Locator;
-
+    
     constructor(page: Page) {
       super(page);
       this.cartItems = page.locator('[data-test="inventory-item"]');
@@ -16,10 +16,6 @@ export class CartPage extends BasePage {
 
     async getItemNames(): Promise<string[]> {
       return this.page.locator('[data-test="inventory-item-name"]').allTextContents();
-    }
-
-    async removeByIndex(index: number) {
-      await this.page.locator('button[data-test^="remove"]').nth(index).click();
     }
 
     async checkout() {

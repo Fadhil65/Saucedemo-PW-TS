@@ -3,7 +3,7 @@ import { test, expect } from '../../src/fixtures/fixtures';
 
   test.describe('Checkout', () => {
     test.beforeEach(async ({ authenticatedPage }) => {
-      await authenticatedPage.addToCartByIndex(0);
+      await authenticatedPage.btnAddToCartBackpack.click();
       await authenticatedPage.goToCart();
     });
 
